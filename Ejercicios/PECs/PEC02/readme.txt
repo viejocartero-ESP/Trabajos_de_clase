@@ -1,11 +1,17 @@
 Control de cambios: 
-V0.1 codigo funcional. faltan cosas
+
+V0.9 
+Mas mejoras, que casi no se ven
 
 
 V 0.2 
 Mejoras
 Quito lista todas las tareas
 Añado Titulo con art
+
+
+V0.1 codigo funcional. faltan cosas
+
 
 
 Falta:
