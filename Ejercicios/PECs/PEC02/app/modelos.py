@@ -27,6 +27,29 @@ autoreset=True
 from colorama import *
 #initialization
 init(autoreset=True)
+from colorama import just_fix_windows_console
+just_fix_windows_console()
+
+#dependencias de otros ficheros
+from app.operaciones import añade_tarea, buscar_tarea, listar_tareas_pend
+
+
+def menu():
+    """ Lógica del programa, decide qué función ejecutar en cada caso"""
+    continuar = True
+    while continuar == True:
+        main()
+        selecc= input("\nElige tu opción: ")
+        if selecc == "a":
+            añade_tarea()
+        elif selecc == "v":
+            listar_tareas_pend()   
+        elif selecc == "b":
+            buscar_tarea()
+        elif selecc == "s":
+            continuar=False
+        else:
+            print("\nOpción no válida. Por favor, elige una opción válida.")
 
 
 def main():
@@ -34,16 +57,15 @@ def main():
     clear()
     continuar = True
     print_bienve()
-    print("\nSelecciona una de estas opciones:")
-    print(Style.BRIGHT + Back.RED + "a", "  ","Añadir tarea")
-    print(Style.BRIGHT + Back.RED + "x", "  ", "Ver todaX las tareas")
-    print(Style.BRIGHT + Back.RED + "v", "  ", "ver lista de tareas pendientes")
-    print(Style.BRIGHT + Back.RED + "b", "  ", "Buscar una tarea o clave por un texto")
-    print(Style.BRIGHT + Back.RED + "s", "  ", "Salir del programa")
+    print(Style.BRIGHT + Back.WHITE + "\n Selecciona una de estas opciones:")
+    print(Style.BRIGHT + Back.RED + "a", "---","Añadir tarea")
+    print(Style.BRIGHT + Back.RED + "v", "---", "ver lista de tareas pendientes")
+    print(Style.BRIGHT + Back.RED + "b", "---", "Buscar una tarea o clave por un texto")
+    print(Style.BRIGHT + Back.RED + "s", "---", "Salir del programa")
 
 
-#Texto Art Form https://patorjk.com/software/taag/#p=testall&f=Slant+Relief&t=Control+de+tareas&x=none&v=4&h=4&w=80&we=false
 
 def print_bienve():
     """"Imprime la cabecera del programa en la UI."""
-    print(Style.BRIGHT + Back.WHITE + "BIENVENIDO AL CONTROL DE TAREAS")
+    art=text2art("TAREAS", font='block', chr_ignore=True)
+    print(art)

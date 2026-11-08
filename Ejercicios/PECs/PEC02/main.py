@@ -33,22 +33,8 @@ operaciones: operaciones sobre los datos
 """
 
 # Importa funciones y variable
-from app.operaciones import añade_tarea, buscar_tarea, listar_tareas_pend, listar_tareas_todas
-from app.modelos import tareas, continuar, main
+from app.modelos import menu
+
 
 #Lógica del programa
-while continuar == True:
-    main()
-    selecc= input("\nElige tu opción: ")
-    if selecc == "a":
-        añade_tarea()
-    elif selecc == "v":
-        listar_tareas_pend()   
-    elif selecc == "x":
-        listar_tareas_todas()
-    elif selecc == "b":
-        buscar_tarea()
-    elif selecc == "s":
-        continuar=False
-    else:
-        print("\nOpción no válida. Por favor, elige una opción válida.")
+menu()

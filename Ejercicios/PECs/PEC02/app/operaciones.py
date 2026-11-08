@@ -1,12 +1,22 @@
-from app.modelos import tareas, continuar, main, tarea, clave, tarea_n, extra, p, terminada, clear, re
+#Import colorama
+from colorama import *
+#initialization
+init(autoreset=True)
+from colorama import just_fix_windows_console
+just_fix_windows_console()
 
-#terminada = False
+from app.modelos import tareas, continuar, tarea, clave, tarea_n, extra, p, terminada, clear, re
+
 def añade_tarea():
     """ Añade tareas. Crea tupla con clave, tarea, terminada. Crea otra tupla con el texto extra,
     n veces la tupla extra_tipo, extra_texto y append esta tupla a la inicial"""
     clave = input("Introduce una clave de la tarea: ")
     tarea = input("Introduce la tarea: ")
-    terminada = bool((int(input("Escribe 1 si está terminada, 0 si está pendiente: "))) > 0)     
+    terminada_txt = ((input("Escribe t si está terminada, a si está abierta: ")))
+    if terminada_txt == "t":
+        terminada = True
+    elif terminada_txt == "a":
+        terminada = False
     mas = input("¿quieres añadir alguna información adicional a la tarea? (s/n): ")
     extra = []
     while mas == "s":
@@ -17,16 +27,6 @@ def añade_tarea():
     tarea_n = [clave, tarea, terminada, extra]
     tareas.append(tarea_n)
 
-
-def listar_tareas_todas():
-    """ Imprime todas las tareas. Bucle for que recorre la tupla tareas, pasa a txt el contenido de cada elemento, 
-    le quita caracteres molestos y lo imprime"""
-    print("\nTodas las tareas:\n")
-    for i in range(len(tareas)):
-            text = str(f"Clave: {tareas[i][0]}, Tarea: {tareas[i][1]}, terminada: {tareas[i][2]}, {tareas[i][3]}")
-            text = re.sub(r"[\[\]']", "", text)
-            print(text)
-    input("Presiona Enter para continuar...")
 
 def listar_tareas_pend():
     """ Imprime las tareas pendientes. Recorre cada elemento de la tupla tareas y cuando está 
